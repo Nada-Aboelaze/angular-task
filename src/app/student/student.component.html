@@ -1,0 +1,31 @@
+
+  <label> Enter Your Information </label>
+<br><br>
+
+<input #inputFirstName type="text" placeholder="First Name">
+
+<input #inputLastName type="text" placeholder="Last Name" >
+
+<input #inputAge type="text" placeholder="Age" >
+<br><br>
+<button type="button" (click)="addStudent(inputFirstName.value, inputLastName.value, +(inputAge.value))"> Add </button>
+<br><br>
+<p>you added <b>{{getStudentNumber()}}</b> students</p>
+
+<br><br>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>Full Name</th>
+    <th>Age</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let student of sortStudents() ; let studentIndex = index">
+    <td> {{studentIndex+1}} </td>
+    <td [ngClass]="{'below-20': student.age<20}"> {{getFullName(student)}} </td>
+    <td> <input type="number" [(ngModel)]="student.age" > </td>
+    <td> <button type="button" (click)="deleteStudent(studentIndex)">delete</button> </td>
+  </tr>
+</table>
+

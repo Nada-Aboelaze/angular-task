@@ -1,0 +1,41 @@
+<form > 
+  <input #inputFirstName type="text" placeholder="First Name"> <br> <br>
+  
+  <input #inputLastName type="text" placeholder="Last Name" > <br> <br>
+  
+  <input #inputAge type="text" placeholder="Age" > 
+  <br><br>
+  <button type="button" class="btn btn-primary" (click)="addStudent(inputFirstName.value, inputLastName.value, +(inputAge.value))"> Add </button>
+  <br><br>
+</form> 
+  <p>you added <b>{{getStudentNumber()}}</b> students</p>
+  
+  <br><br>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-success table-striped" *ngIf="students.length != 0">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Age</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+    <tbody>
+      <tr *ngFor="let student of students ; let studentIndex = index" >
+        <td> {{studentIndex+1}} </td>
+        <td> {{getFullName(student)}} </td>
+        <td> <input type="number" [value]="student.age" > </td>
+        <td> <button class="btn btn-danger" (click)="deleteStudent(studentIndex)">Delete</button> </td>
+    </tr>
+</tbody>
+    </table>
+</div>
+</div>
+</div>
+
+  
+  
